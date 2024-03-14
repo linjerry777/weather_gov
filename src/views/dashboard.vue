@@ -36,7 +36,7 @@
                 <img src="/src/dist/04.svg" alt="">
                 <div><span class="">wind speed : </span>11 km</div>
                 <div><span class="">Tuesday : </span>19:52</div>
-                <div>Cloudy</div>
+                <div>123{{ weatherInfo.weather }}</div>
 
             </div>
 
@@ -51,7 +51,7 @@
 import { onMounted } from 'vue';
 import { useWeatherStore } from '@/stores/weather';
 const { weatherData, weatherInfo } = useWeatherStore();
-
+console.log(weatherData);
 </script>
 
 <style lang="scss" scoped></style>
