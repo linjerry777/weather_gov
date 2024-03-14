@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 600px;" @mouseleave="clearHover">
+    <div class="detailList" @mouseleave="clearHover">
 
         <ol class="flex flex-wrap">
             <li v-for="(area, index) in weatherData" :key="index"

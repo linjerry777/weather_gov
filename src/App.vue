@@ -1,17 +1,11 @@
 <template>
   <Header />
-  <div class="max-w-6xl m-auto">
 
-    <el-row justify="space-around">
-      <el-col :span="12">
-        <Taiwan />
-      </el-col>
-      <el-col :span="12" class="detail">
-        <RouterView></RouterView>
-      </el-col>
-    </el-row>
-
+  <div class="box">
+    <Taiwan />
+    <RouterView></RouterView>
   </div>
+
 </template>
 
 <script setup>
