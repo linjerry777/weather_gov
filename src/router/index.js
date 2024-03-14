@@ -6,12 +6,16 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/',
+      name: '清單',
+      component:detailList ,
+      
+    },
+    {
       path: '/dashboard',
       name: '詳細',
       component:dashboard ,
-      beforeRouteEnter:(to,from)=>{
-        console.log(to,from);
-      }
+      
     },
     
   ]

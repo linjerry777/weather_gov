@@ -9,16 +9,14 @@
                     class="flex flex-nowrap justify-center items-center   min-h-[55px]  w-full ">
 
                     <span class="pr-1 w-full text-center">{{ area.place }}</span>
-                    <span class="pr-1 w-full text-center"><img class="w-6 h-6 my-0 mx-auto  " src="/src/dist/02.svg"
+                    <span class="pr-1 w-full text-center"><img class="w-6 h-6 my-0 mx-auto  " src="/src/dist/01.svg"
                             alt=""></span>
                     <span class="pr-1 w-full text-center">{{ area.low }} - {{ area.high }}˚C</span>
                 </RouterLink>
             </li>
 
         </ol>
-        <div>
-            <RouterView></RouterView>
-        </div>
+        
     </div>
 
 </template>

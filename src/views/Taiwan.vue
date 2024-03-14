@@ -1,5 +1,5 @@
 <template>
-    <div class="taiwan_map h-full">
+    <div class="taiwan_map h-3/4">
         <svg @mouseleave="clearHover" id="cf503461-00bd-459a-aeb5-062ebc913211" data-name="圖層 1" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 595.28 841.89">
             <defs />
