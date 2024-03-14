@@ -9,7 +9,7 @@ const router = createRouter({
       path: '/',
       name: '清單',
       component:detailList ,
-      
+     
     },
     {
       path: '/dashboard',

@@ -9,12 +9,13 @@
 </template>
 
 <script setup>
-import detailList from '@/views/detailList.vue';
+
 import Taiwan from '@/views/Taiwan.vue';
-import dashboard from '@/views/dashboard.vue';
 import Header from '@/components/Header.vue';
 import { RouterView, RouterLink } from 'vue-router';
 import '@/style/dashboard.scss'
+import { useWeatherStore } from '@/stores/weather';
+const { weatherData, weatherInfo } = useWeatherStore();
 </script>
 
 <style scoped>

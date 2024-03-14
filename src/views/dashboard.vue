@@ -49,6 +49,8 @@
 <script setup>
 
 import { onMounted } from 'vue';
+import { useWeatherStore } from '@/stores/weather';
+const { weatherData, weatherInfo } = useWeatherStore();
 
 </script>
 

@@ -195,6 +195,7 @@
 import { useWeatherStore } from '@/stores/weather'
 const { weatherData,weatherInfo } = useWeatherStore();
 
+
 let paths;
 onMounted(() => {
 
