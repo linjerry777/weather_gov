@@ -47,8 +47,12 @@ body {
   }
   .card-group {
     .card {
+      border: 1px solid #ccc;
+      border-radius: 15%;
+      margin: 0 5px;
       color: aliceblue;
       flex: 1;
+      font-size: 15px;
       align-items: center;
       img {
         width: 70%;

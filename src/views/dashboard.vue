@@ -20,12 +20,14 @@
 
         <div class="flex card-group ">
             <div class="flex flex-col card ">
+                <div>今日白天</div>
                 <img src="/src/dist/04.svg" alt="">
-                <div><span class="">wind speed : </span>11 km</div>
+                <div>{{  }}</div>
                 <div><span class="">Tuesday : </span>19:52</div>
                 <div>Cloudy</div>
             </div>
             <div class="flex flex-col card ">
+                <div>今晚明晨</div>
                 <img src="/src/dist/04.svg" alt="">
                 <div><span class="">wind speed : </span>11 km</div>
                 <div><span class="">Tuesday : </span>19:52</div>
@@ -33,10 +35,11 @@
 
             </div>
             <div class="flex flex-col card">
+                <div>明日白天</div>
                 <img src="/src/dist/04.svg" alt="">
                 <div><span class="">wind speed : </span>11 km</div>
                 <div><span class="">Tuesday : </span>19:52</div>
-                <div>123{{ weatherInfo.weather }}</div>
+                <div>123{{ weatherSelect }}</div>
 
             </div>
 
@@ -51,7 +54,9 @@
 import { onMounted } from 'vue';
 import { useWeatherStore } from '@/stores/weather';
 const { weatherData, weatherInfo } = useWeatherStore();
-console.log(weatherData);
+const { weatherSelect} = defineProps(['weatherSelect'])
+// console.log(weatherSelect,111);
+
 </script>
 
 <style lang="scss" scoped></style>

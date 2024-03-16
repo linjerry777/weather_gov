@@ -185,7 +185,7 @@
                     d="M176.9,53.81l-1.63,1.43.14.47,2.85.2-.14-.81-1.22-1.29Z" />
             </g>
         </svg>
-        <p>{{ weatherInfo.low }}</p>
+        
     </div>
 </template>
 
@@ -193,7 +193,7 @@
 <script setup>
 
 import { useWeatherStore } from '@/stores/weather'
-const { weatherData,weatherInfo } = useWeatherStore();
+const { weatherData,SelectPlace } = useWeatherStore();
 
 
 let paths;
@@ -214,17 +214,13 @@ function handleMouseover(nameZh) {
     const matchPlace = weatherData.find(place => place.place == nameZh);
     if (matchPlace) {
         weatherInfo.place = matchPlace.place;
-        weatherInfo.low = matchPlace.low;
-        weatherInfo.high = matchPlace.high;
-        weatherInfo.weather = matchPlace.weather;
+    
     } 
 
 }
 function clearHover() {
     weatherInfo.place = ''
-    weatherInfo.low = '';
-    weatherInfo.high = '';
-    weatherInfo.weather = '';
+    
 
 }
 

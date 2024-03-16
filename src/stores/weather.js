@@ -12,33 +12,82 @@ export const useWeatherStore = defineStore("weather", () => {
     );
     console.log(records);
 
-    for (let i = 0; i < records.location.length; i++) {
-      let location = records.location[i];
-
+    records.location.forEach((location) => {
       let place = location.locationName;
-      let low = "";
-      let high = "";
-      let weather = "";
+      let weatherDataForLocation = []; // 新增一個陣列，用於存放每個地點的三天資料
 
-      for (let i = 0; i < location.weatherElement.length; i++) {
-        let weatherElement = location.weatherElement[i];
-        if (weatherElement.elementName == "MaxT") {
-          high = weatherElement.time[0].parameter.parameterName;
+      
+      for (let day = 0; day < 3; day++) {
+        let low = "";
+        let high = "";
+        let weather = "";
+
+        
+        let startTime = "";
+        let endTime = "";
+
+        //高溫
+        let maxT = location.weatherElement.find(
+          (weatherElement) => weatherElement.elementName === "MaxT"
+        );
+        if (maxT) {
+          high = maxT.time[day].parameter.parameterName; 
         }
-        if (weatherElement.elementName == "MinT") {
-          low = weatherElement.time[0].parameter.parameterName;
+
+        //低溫
+        let minT = location.weatherElement.find(
+          (weatherElement) => weatherElement.elementName === "MinT"
+        );
+        if (minT) {
+          low = minT.time[day].parameter.parameterName; 
+          startTime = minT.time[day].startTime;
+          endTime = minT.time[day].endTime;
         }
-        if (weatherElement.elementName == "Wx") {
-          weather = weatherElement.time[0].parameter.parameterName;
+
+        //雲
+        let wx = location.weatherElement.find(
+          (weatherElement) => weatherElement.elementName === "Wx"
+        );
+        if (wx) {
+          weather = wx.time[day].parameter.parameterName; 
         }
+
+        //降雨機率
+        let pop = location.weatherElement.find(
+          (weatherElement) => weatherElement.elementName === "PoP"
+        );
+        if (pop) {
+          pop = pop.time[day].parameter.parameterName;
+        }
+
+        //體感
+        let ci = location.weatherElement.find(
+          (weatherElement) => weatherElement.elementName === "CI"
+        );
+        if (ci) {
+          ci = ci.time[day].parameter.parameterName; 
+        }
+
+        // 將當天的資料新增到地點的天氣資料陣列中
+        weatherDataForLocation.push({
+          day: day + 1, // 將 day 轉換為從 1 開始的索引
+          startTime: startTime,
+          endTime: endTime,
+          low: low,
+          high: high,
+          weather: weather,
+          ci: ci,
+          pop: pop,
+        });
       }
+
+      // 將地點的三天資料新增到整體的天氣資料中
       weatherData.push({
         place: place,
-        low: low,
-        high: high,
-        weather: weather,
+        weatherData: weatherDataForLocation,
       });
-    }
+    });
+
     console.log(weatherData);
   }
   onMounted(() => {
@@ -46,12 +95,7 @@ export const useWeatherStore = defineStore("weather", () => {
     getWeather();
   });
 
-
-  let weatherInfo= {
-    place: '',
-    low: '',
-    high: '',
-    weather: ''
-  }
-  return { weatherData,weatherInfo};
+  let SelectPlace ='';
+   
+  return { weatherData, SelectPlace };
 });

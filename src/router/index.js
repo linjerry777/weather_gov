@@ -7,15 +7,15 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: '清單',
+      name: 'list',
       component:detailList ,
      
     },
     {
-      path: '/dashboard',
-      name: '詳細',
+      path: '/dashboard/:weatherSelect?',
+      name: 'db',
       component:dashboard ,
-      
+      props:true
     },
     
   ]
