@@ -3,7 +3,7 @@
 
         <ol class="flex flex-wrap">
             <li @click="SelectWeather(area)" v-for="(area, index) in weatherData" :key="index"
-                :class="{ 'bg-[#ddd]': area.place == SelectedPlace.place }"
+                :class="{ 'bg-[#ddd]': area.place == selectPlace }"
                 class=" flex flex-nowrap justify-center items-center border border-solid border-[#ddd] w-2/4 min-h-[55px] hover:bg-[#ddd]">
                 <RouterLink :to="{name: 'db' }"
                     class="flex flex-nowrap justify-center items-center   min-h-[55px]  w-full ">
@@ -24,14 +24,12 @@
 
 <script setup>
 import { useWeatherStore } from '@/stores/weather'
-import { RouterView, RouterLink } from 'vue-router';
-const { weatherData, SelectedPlace } = useWeatherStore();
-// const router = useRouter();
+const weatherStore = useWeatherStore();
 
+const { weatherData, selectPlace } = storeToRefs(weatherStore);
 
 function SelectWeather(area){
-    SelectedPlace.place = area.place
-    console.log(SelectedPlace);
+    weatherStore.selectPlace = area.place
 }
 
 </script>

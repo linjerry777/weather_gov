@@ -192,49 +192,38 @@
 
 
 <script setup>
+    import { useWeatherStore } from '@/stores/weather'
+    const weatherStore = useWeatherStore();
 
-import { useWeatherStore } from '@/stores/weather'
+    onMounted(() => {
+        let path = document.querySelectorAll('path');
 
-const { weatherData, SelectedPlace } = useWeatherStore();
+        path.forEach(_path => {
+            _path.addEventListener('mouseover', function () {
+                setWeatherStoreSelectPlace(this.dataset.nameZh, false);
+            });
 
-
-
-let paths;
-
-onMounted(() => {
-
-    paths = document.querySelectorAll('path');
-
-    paths.forEach(path => {
-        path.addEventListener('mouseover', function () {
-            let nameZh = this.dataset.nameZh
-            // console.log('Mouseover:', nameZh);
-            const matchPlace = weatherData.find(place => place.place == nameZh);
-            if (matchPlace) {
-                SelectedPlace.place = matchPlace.place;
-            }
+            _path.addEventListener('click', function () {
+                setWeatherStoreSelectPlace(this.dataset.nameZh, true);
+            });
         });
-        path.addEventListener('click', function () {
-            let nameZh = this.dataset.nameZh
-            const matchPlace = weatherData.find(place => place.place == nameZh);
-            if (matchPlace) {
-                SelectedPlace.place = matchPlace.place;
+    });
+
+    function setWeatherStoreSelectPlace(cityName, needJumpPage) {
+        const matchPlace = weatherStore.weatherData.find(place => place.place == cityName);
+
+        if (matchPlace) {
+            weatherStore.selectPlace = matchPlace.place;
+
+            if (needJumpPage) {
                 router.push({
                     name: 'db', // 路由的名稱
                 });
             }
-        });
-    });
-
-});
-
-
-/* function clearHover() {
-    SelectedPlace.place = ''
-} */
-
-
+        }
+    }
 </script>
+
 <style scoped>
 svg {
     height: 100%;
