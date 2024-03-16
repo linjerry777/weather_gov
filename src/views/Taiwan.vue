@@ -1,7 +1,7 @@
 <template>
     <div class="taiwan_map">
-        <svg @mouseleave="clearHover" id="cf503461-00bd-459a-aeb5-062ebc913211" data-name="圖層 1" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 595.28 841.89">
+        <svg @mouseleave="clearHover" id="cf503461-00bd-459a-aeb5-062ebc913211" data-name="圖層 1"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.28 841.89">
             <defs />
             <title>
                 taiwan.svg
@@ -185,44 +185,53 @@
                     d="M176.9,53.81l-1.63,1.43.14.47,2.85.2-.14-.81-1.22-1.29Z" />
             </g>
         </svg>
-        
+
     </div>
+
 </template>
 
 
 <script setup>
 
 import { useWeatherStore } from '@/stores/weather'
-const { weatherData,SelectPlace } = useWeatherStore();
+
+const { weatherData, SelectedPlace } = useWeatherStore();
+
 
 
 let paths;
+
 onMounted(() => {
 
     paths = document.querySelectorAll('path');
 
     paths.forEach(path => {
         path.addEventListener('mouseover', function () {
-            handleMouseover(this.dataset.nameZh);
+            let nameZh = this.dataset.nameZh
+            // console.log('Mouseover:', nameZh);
+            const matchPlace = weatherData.find(place => place.place == nameZh);
+            if (matchPlace) {
+                SelectedPlace.place = matchPlace.place;
+            }
+        });
+        path.addEventListener('click', function () {
+            let nameZh = this.dataset.nameZh
+            const matchPlace = weatherData.find(place => place.place == nameZh);
+            if (matchPlace) {
+                SelectedPlace.place = matchPlace.place;
+                router.push({
+                    name: 'db', // 路由的名稱
+                });
+            }
         });
     });
 
 });
-function handleMouseover(nameZh) {
-    // 在这里处理鼠标悬停事件
-    console.log('Mouseover:', nameZh);
-    const matchPlace = weatherData.find(place => place.place == nameZh);
-    if (matchPlace) {
-        weatherInfo.place = matchPlace.place;
-    
-    } 
 
-}
-function clearHover() {
-    weatherInfo.place = ''
-    
 
-}
+/* function clearHover() {
+    SelectedPlace.place = ''
+} */
 
 
 </script>
@@ -246,7 +255,7 @@ path:hover {
 }
 
 
-p{
+p {
     color: aliceblue;
 }
 </style>

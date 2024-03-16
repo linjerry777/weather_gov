@@ -22,16 +22,18 @@
             <div class="flex flex-col card ">
                 <div>今日白天</div>
                 <img src="/src/dist/04.svg" alt="">
-                <div>{{  }}</div>
+                <div>{{ }}</div>
                 <div><span class="">Tuesday : </span>19:52</div>
-                <div>Cloudy</div>
+                <div>123{{ cityInfo.place }}</div>
+
             </div>
             <div class="flex flex-col card ">
                 <div>今晚明晨</div>
                 <img src="/src/dist/04.svg" alt="">
                 <div><span class="">wind speed : </span>11 km</div>
                 <div><span class="">Tuesday : </span>19:52</div>
-                <div>Cloudy</div>
+                <div>123{{ cityInfo.place }}</div>
+
 
             </div>
             <div class="flex flex-col card">
@@ -39,7 +41,7 @@
                 <img src="/src/dist/04.svg" alt="">
                 <div><span class="">wind speed : </span>11 km</div>
                 <div><span class="">Tuesday : </span>19:52</div>
-                <div>123{{ weatherSelect }}</div>
+                <div>123{{ cityInfo }}</div>
 
             </div>
 
@@ -51,11 +53,18 @@
 </template>
 <script setup>
 
-import { onMounted } from 'vue';
+
 import { useWeatherStore } from '@/stores/weather';
-const { weatherData, weatherInfo } = useWeatherStore();
-const { weatherSelect} = defineProps(['weatherSelect'])
-// console.log(weatherSelect,111);
+const { weatherData,SelectedPlace } = useWeatherStore();
+
+let cityInfo = reactive({})
+console.log(SelectedPlace,111);
+
+watch(()=>SelectedPlace.place,(newValue, oldValue)=>{
+    // console.log(newValue,'watch');
+    cityInfo = weatherData.find((city) => city.place == newValue)
+    console.log(cityInfo, 'cityInfo');
+});
 
 </script>
 

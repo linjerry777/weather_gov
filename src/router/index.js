@@ -12,7 +12,7 @@ const router = createRouter({
      
     },
     {
-      path: '/dashboard/:weatherSelect?',
+      path: '/dashboard/:SelectedPlace?',
       name: 'db',
       component:dashboard ,
       props:true

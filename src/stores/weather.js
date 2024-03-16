@@ -94,8 +94,10 @@ export const useWeatherStore = defineStore("weather", () => {
     // console.log(123);
     getWeather();
   });
-
-  let SelectPlace ='';
-   
-  return { weatherData, SelectPlace };
+  
+  let SelectedPlace = {
+    place: "",
+  };
+ 
+  return { weatherData, SelectedPlace };
 });
