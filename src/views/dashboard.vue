@@ -55,17 +55,11 @@
 
 
 import { useWeatherStore } from '@/stores/weather';
-const { weatherData,SelectedPlace } = useWeatherStore();
+import { storeToRefs } from "pinia";
+const weatherStore = useWeatherStore();
+const { weatherData, cityInfo } = storeToRefs(weatherStore);
 
-let cityInfo = reactive({})
-console.log(SelectedPlace,111);
-
-watch(()=>SelectedPlace.place,(newValue, oldValue)=>{
-    // console.log(newValue,'watch');
-    cityInfo = weatherData.find((city) => city.place == newValue)
-    console.log(cityInfo, 'cityInfo');
-});
-
+console.log(cityInfo);
 </script>
 
 <style lang="scss" scoped></style>

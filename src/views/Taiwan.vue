@@ -211,7 +211,7 @@ onMounted(() => {
             // console.log('Mouseover:', nameZh);
             const matchPlace = weatherData.find(place => place.place == nameZh);
             if (matchPlace) {
-                SelectedPlace.place = matchPlace.place;
+                // SelectedPlace.place = matchPlace.place;
             }
         });
         path.addEventListener('click', function () {

@@ -15,7 +15,12 @@ import Header from '@/components/Header.vue';
 import { RouterView, RouterLink } from 'vue-router';
 import '@/style/dashboard.scss'
 import { useWeatherStore } from '@/stores/weather';
-const { weatherData, weatherInfo } = useWeatherStore();
+const { weatherData, weatherInfo,getWeather } = useWeatherStore();
+
+onMounted(() => {
+    // console.log(123);
+    getWeather();
+  });
 </script>
 
 <style scoped>

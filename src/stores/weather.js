@@ -1,8 +1,8 @@
-import { ref, computed } from "vue";
+import { ref, computed,watch } from "vue";
 import { defineStore } from "pinia";
 
 import axios from "axios";
-export const useWeatherStore = defineStore("weather", () => {
+/* export const useWeatherStore = defineStore("weather", () => {
   let weatherData = reactive([]);
   async function getWeather() {
     let {
@@ -95,9 +95,99 @@ export const useWeatherStore = defineStore("weather", () => {
     getWeather();
   });
   
-  let SelectedPlace = {
+  let SelectedPlace = reactive({
     place: "",
-  };
+  });
+
+  let cityInfo = reactive([''])
+
+
+  watch(()=>SelectedPlace.place,(newValue, oldValue)=>{
+      // console.log(newValue,'watch');
+      
+      cityInfo.push(weatherData.find((city) => city.place == newValue))
+      console.log(cityInfo, 'cityInfo');
+  });
  
-  return { weatherData, SelectedPlace };
+  return { weatherData, SelectedPlace,cityInfo };
+}); */
+
+export const useWeatherStore = defineStore({
+  id: 'weather',
+  state: () => ({
+    weatherData: [],
+    selectedPlace: { place: '' },
+    cityInfo: [],
+  }),
+  actions: {
+    async getWeather() {
+      try {
+        const response = await axios.get(
+          'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-0F5E6A37-DF69-4EB0-849C-8295DCC0184A'
+        );
+        const records = response.data.records;
+
+        records.location.forEach(location => {
+          let place = location.locationName;
+          let weatherDataForLocation = [];
+
+          for (let day = 0; day < 3; day++) {
+            let low = '';
+            let high = '';
+            let weather = '';
+            let startTime = '';
+            let endTime = '';
+
+            let maxT = location.weatherElement.find(weatherElement => weatherElement.elementName === 'MaxT');
+            if (maxT) {
+              high = maxT.time[day].parameter.parameterName;
+            }
+
+            let minT = location.weatherElement.find(weatherElement => weatherElement.elementName === 'MinT');
+            if (minT) {
+              low = minT.time[day].parameter.parameterName;
+              startTime = minT.time[day].startTime;
+              endTime = minT.time[day].endTime;
+            }
+
+            let wx = location.weatherElement.find(weatherElement => weatherElement.elementName === 'Wx');
+            if (wx) {
+              weather = wx.time[day].parameter.parameterName;
+            }
+
+            let pop = location.weatherElement.find(weatherElement => weatherElement.elementName === 'PoP');
+            if (pop) {
+              pop = pop.time[day].parameter.parameterName;
+            }
+
+            let ci = location.weatherElement.find(weatherElement => weatherElement.elementName === 'CI');
+            if (ci) {
+              ci = ci.time[day].parameter.parameterName;
+            }
+
+            weatherDataForLocation.push({
+              day: day + 1,
+              startTime: startTime,
+              endTime: endTime,
+              low: low,
+              high: high,
+              weather: weather,
+              ci: ci,
+              pop: pop,
+            });
+          }
+
+          this.weatherData.push({
+            place: place,
+            weatherData: weatherDataForLocation,
+          });
+        });
+
+        console.log(this.weatherData);
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    },
+  }
+  
 });
