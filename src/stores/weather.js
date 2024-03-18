@@ -116,8 +116,8 @@ export const useWeatherStore = defineStore({
   id: 'weather',
   state: () => ({
     weatherData: [],
-    selectedPlace: { place: '' },
-    cityInfo: [],
+    selectedPlace: { place: '',hover:'' },
+    
   }),
   actions: {
     async getWeather() {
@@ -130,7 +130,7 @@ export const useWeatherStore = defineStore({
         records.location.forEach(location => {
           let place = location.locationName;
           let weatherDataForLocation = [];
-
+          let titleArr = ['今日','今日到明日','明日到後日']
           for (let day = 0; day < 3; day++) {
             let low = '';
             let high = '';
@@ -166,6 +166,7 @@ export const useWeatherStore = defineStore({
             }
 
             weatherDataForLocation.push({
+              dayTitle: titleArr[day],
               day: day + 1,
               startTime: startTime,
               endTime: endTime,
@@ -179,15 +180,25 @@ export const useWeatherStore = defineStore({
 
           this.weatherData.push({
             place: place,
-            weatherData: weatherDataForLocation,
+            CityData: weatherDataForLocation,
           });
         });
 
-        console.log(this.weatherData);
+        
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
     },
-  }
+  },
+  getters: {
+    cityInfo: (state) => {
+      console.log(state.selectedPlace.place);
+      let cityInfo = [];
+      if(state.weatherData){
+        cityInfo = state.weatherData.find((city) => city.place == state.selectedPlace.place);
+      }
+      return cityInfo;
+    } 
+  },
   
 });

@@ -195,7 +195,7 @@
 
 import { useWeatherStore } from '@/stores/weather'
 
-const { weatherData, SelectedPlace } = useWeatherStore();
+const { weatherData, selectedPlace } = useWeatherStore();
 
 
 
@@ -211,14 +211,14 @@ onMounted(() => {
             // console.log('Mouseover:', nameZh);
             const matchPlace = weatherData.find(place => place.place == nameZh);
             if (matchPlace) {
-                // SelectedPlace.place = matchPlace.place;
+                selectedPlace.hover = matchPlace.place;
             }
         });
         path.addEventListener('click', function () {
             let nameZh = this.dataset.nameZh
             const matchPlace = weatherData.find(place => place.place == nameZh);
             if (matchPlace) {
-                SelectedPlace.place = matchPlace.place;
+                selectedPlace.place = matchPlace.place;
                 router.push({
                     name: 'db', // 路由的名稱
                 });
@@ -229,9 +229,9 @@ onMounted(() => {
 });
 
 
-/* function clearHover() {
-    SelectedPlace.place = ''
-} */
+function clearHover() {
+    selectedPlace.hover = ''
+}
 
 
 </script>

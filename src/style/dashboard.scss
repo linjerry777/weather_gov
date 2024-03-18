@@ -42,6 +42,13 @@ body {
   padding: 15px;
   .wenzi {
     margin-bottom: 15px;
+    .returnList {
+      position: absolute;
+    }
+    .citytitle {
+      flex: 1;
+      font-size: 43px;
+    }
   }
   .shaixuan {
   }
@@ -54,8 +61,14 @@ body {
       flex: 1;
       font-size: 15px;
       align-items: center;
+      * {
+        margin-bottom: 5px;
+      }
       img {
         width: 70%;
+      }
+      .umbrella {
+        width: 32%;
       }
     }
   }
