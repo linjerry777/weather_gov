@@ -211,13 +211,16 @@ onMounted(() => {
             // console.log('Mouseover:', nameZh);
             const matchPlace = weatherData.find(place => place.place == nameZh);
             if (matchPlace) {
+                
                 selectedPlace.hover = matchPlace.place;
             }
         });
         path.addEventListener('click', function () {
             let nameZh = this.dataset.nameZh
             const matchPlace = weatherData.find(place => place.place == nameZh);
+                // console.log(matchPlace,221);
             if (matchPlace) {
+                // console.log(matchPlace,223);
                 selectedPlace.place = matchPlace.place;
                 router.push({
                     name: 'db', // 路由的名稱
