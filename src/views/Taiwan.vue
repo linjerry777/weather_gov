@@ -3,9 +3,7 @@
         <svg @mouseleave="clearHover" id="cf503461-00bd-459a-aeb5-062ebc913211" data-name="圖層 1"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.28 841.89">
             <defs />
-            <title>
-                taiwan.svg
-            </title>
+            <title>taiwan.svg</title>
             <path id="161d6372-ac8f-409c-ad51-9db7795c8614" data-name="path2462"
                 class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
                 d="M236.44,701.51,234,705.75l.67.61.85.24,1.83-.55.37-.73,2.07-2.2,1.95-1.22.31-.67-.18-.73-.73-.37-.3-.61-.61-.49-.85.06-1.4.67-.49.55-.61.31-.37.61-.09.27h0Z" />
@@ -185,58 +183,161 @@
                     d="M176.9,53.81l-1.63,1.43.14.47,2.85.2-.14-.81-1.22-1.29Z" />
             </g>
         </svg>
-
+        <div class="weather_data">
+            <a v-for="(city, idx) in weatherData" href="#" target="_self" class="icon_zone" :name="city.enPlace"
+                :aria-label="city.CityData[0]['weather'] + '，降雨機率' + city.CityData[0]['pop'] + '%，請點此進入' + city.place + '網頁觀看詳細天氣內容。'">
+                <img src="/src/dist/08.svg" alt="多雲短暫雨" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>{{city.CityData[0]['low']}}</i>~<i>{{city.CityData[0]['high']}}</i></span></span>
+                <p class="city">{{city.place}}</p>
+            </a>
+            <!--  <a href="10017" target="_self" class="icon_zone" name="C10017"
+                aria-label="多雲短暫雨，降雨機率30%，請點此進入基隆市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/08.svg" alt="多雲短暫雨" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>15</i>~<i>15</i></span></span>
+                <p class="city">基隆市</p>
+            </a>
+            <a href="63" target="_self" class="icon_zone" name="C63" aria-label="多雲時陰短暫雨，降雨機率30%，請點此進入臺北市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/09.svg" alt="多雲時陰短暫雨" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>14</i>~<i>15</i></span></span>
+                <p class="city">臺北市</p>
+            </a>
+            <a href="65" target="_self" class="icon_zone" name="C65" aria-label="多雲時陰短暫雨，降雨機率30%，請點此進入新北市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/09.svg" alt="多雲時陰短暫雨" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>14</i>~<i>15</i></span></span>
+                <p class="city">新北市</p>
+            </a><a href="68" target="_self" class="icon_zone" name="C68" aria-label="多雲時陰，降雨機率20%，請點此進入桃園市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/05.svg" alt="多雲時陰" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>14</i>~<i>15</i></span></span>
+                <p class="city">桃園市</p>
+            </a><a href="10018" target="_self" class="icon_zone" name="C10018"
+                aria-label="多雲時陰，降雨機率20%，請點此進入新竹市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/05.svg" alt="多雲時陰" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>15</i>~<i>15</i></span></span>
+                <p class="city">新竹市</p>
+            </a><a href="10004" target="_self" class="icon_zone" name="C10004"
+                aria-label="多雲時陰，降雨機率20%，請點此進入新竹縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/05.svg" alt="多雲時陰" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>14</i>~<i>15</i></span></span>
+                <p class="city">新竹縣</p>
+            </a><a href="10005" target="_self" class="icon_zone" name="C10005"
+                aria-label="多雲，降雨機率20%，請點此進入苗栗縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/04.svg" alt="多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>15</i>~<i>16</i></span></span>
+                <p class="city">苗栗縣</p>
+            </a><a href="66" target="_self" class="icon_zone" name="C66" aria-label="多雲，降雨機率20%，請點此進入臺中市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/04.svg" alt="多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>18</i>~<i>20</i></span></span>
+                <p class="city">臺中市</p>
+            </a><a href="10007" target="_self" class="icon_zone" name="C10007"
+                aria-label="多雲，降雨機率20%，請點此進入彰化縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/04.svg" alt="多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>18</i>~<i>19</i></span></span>
+                <p class="city">彰化縣</p>
+            </a><a href="10008" target="_self" class="icon_zone" name="C10008"
+                aria-label="多雲，降雨機率20%，請點此進入南投縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/04.svg" alt="多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>19</i>~<i>21</i></span></span>
+                <p class="city">南投縣</p>
+            </a><a href="10009" target="_self" class="icon_zone" name="C10009"
+                aria-label="多雲，降雨機率20%，請點此進入雲林縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/04.svg" alt="多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>18</i>~<i>20</i></span></span>
+                <p class="city">雲林縣</p>
+            </a><a href="10020" target="_self" class="icon_zone" name="C10020"
+                aria-label="多雲，降雨機率20%，請點此進入嘉義市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/04.svg" alt="多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>20</i>~<i>23</i></span></span>
+                <p class="city">嘉義市</p>
+            </a><a href="10010" target="_self" class="icon_zone" name="C10010"
+                aria-label="多雲，降雨機率20%，請點此進入嘉義縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/04.svg" alt="多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>20</i>~<i>22</i></span></span>
+                <p class="city">嘉義縣</p>
+            </a><a href="67" target="_self" class="icon_zone" name="C67" aria-label="晴時多雲，降雨機率10%，請點此進入臺南市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/02.svg" alt="晴時多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>22</i>~<i>25</i></span></span>
+                <p class="city">臺南市</p>
+            </a><a href="64" target="_self" class="icon_zone" name="C64" aria-label="晴時多雲，降雨機率10%，請點此進入高雄市網頁觀看詳細天氣內容。">
+                <img src="/src/dist/02.svg" alt="晴時多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>25</i>~<i>28</i></span></span>
+                <p class="city">高雄市</p>
+            </a><a href="10013" target="_self" class="icon_zone" name="C10013"
+                aria-label="晴時多雲，降雨機率10%，請點此進入屏東縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/02.svg" alt="晴時多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>26</i>~<i>30</i></span></span>
+                <p class="city">屏東縣</p>
+            </a><a href="10002" target="_self" class="icon_zone" name="C10002"
+                aria-label="多雲短暫雨，降雨機率30%，請點此進入宜蘭縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/08.svg" alt="多雲短暫雨" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>16</i>~<i>19</i></span></span>
+                <p class="city">宜蘭縣</p>
+            </a><a href="10015" target="_self" class="icon_zone" name="C10015"
+                aria-label="陰短暫雨，降雨機率30%，請點此進入花蓮縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/11.svg" alt="陰短暫雨" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>19</i>~<i>21</i></span></span>
+                <p class="city">花蓮縣</p>
+            </a><a href="10014" target="_self" class="icon_zone" name="C10014"
+                aria-label="陰短暫雨，降雨機率30%，請點此進入臺東縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/11.svg" alt="陰短暫雨" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>21</i>~<i>25</i></span></span>
+                <p class="city">臺東縣</p>
+            </a><a href="10016" target="_self" class="icon_zone" name="C10016"
+                aria-label="晴時多雲，降雨機率10%，請點此進入澎湖縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/02.svg" alt="晴時多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>19</i>~<i>20</i></span></span>
+                <p class="city">澎湖縣</p>
+            </a><a href="09020" target="_self" class="icon_zone" name="C09020"
+                aria-label="晴時多雲，降雨機率10%，請點此進入金門縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/02.svg" alt="晴時多雲" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>16</i>~<i>21</i></span></span>
+                <p class="city">金門縣</p>
+            </a><a href="09007" target="_self" class="icon_zone" name="C09007"
+                aria-label="多雲時晴，降雨機率10%，請點此進入連江縣網頁觀看詳細天氣內容。">
+                <img src="/src/dist/03.svg" alt="多雲時晴" class="img-responsive" /><span class="temperature"><span
+                        class="tem-C is-active"><i>12</i>~<i>14</i></span></span>
+                <p class="city">連江縣</p>
+            </a> -->
+        </div>
     </div>
-
 </template>
 
-
 <script setup>
-
-import { useWeatherStore } from '@/stores/weather'
+import { useWeatherStore } from "@/stores/weather";
 
 const { weatherData, selectedPlace } = useWeatherStore();
-
-
 
 let paths;
 
 onMounted(() => {
+    paths = document.querySelectorAll("path");
 
-    paths = document.querySelectorAll('path');
-
-    paths.forEach(path => {
-        path.addEventListener('mouseover', function () {
-            let nameZh = this.dataset.nameZh
+    paths.forEach((path) => {
+        path.addEventListener("mouseover", function () {
+            let nameZh = this.dataset.nameZh;
             // console.log('Mouseover:', nameZh);
-            const matchPlace = weatherData.find(place => place.place == nameZh);
+            const matchPlace = weatherData.find((place) => place.place == nameZh);
             if (matchPlace) {
-                
                 selectedPlace.hover = matchPlace.place;
             }
         });
-        path.addEventListener('click', function () {
-            let nameZh = this.dataset.nameZh
-            const matchPlace = weatherData.find(place => place.place == nameZh);
-                // console.log(matchPlace,221);
+        path.addEventListener("click", function () {
+            let nameZh = this.dataset.nameZh;
+            const matchPlace = weatherData.find((place) => place.place == nameZh);
+            // console.log(matchPlace,221);
             if (matchPlace) {
                 // console.log(matchPlace,223);
                 selectedPlace.place = matchPlace.place;
                 router.push({
-                    name: 'db', // 路由的名稱
+                    name: "db", // 路由的名稱
                 });
             }
         });
     });
-
 });
 
-
 function clearHover() {
-    selectedPlace.hover = ''
+    selectedPlace.hover = "";
 }
-
-
 </script>
 <style scoped>
 svg {
@@ -256,7 +357,6 @@ path:hover {
     fill: #1596ed;
     transform: translate(-5px, -5px);
 }
-
 
 p {
     color: aliceblue;

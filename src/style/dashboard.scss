@@ -24,6 +24,132 @@ body {
 
 .taiwan_map {
   flex: 1;
+  // width: 400px;
+  svg {
+    width: 520px;
+    z-index: 3;
+  }
+  .weather_data {
+    position: absolute;
+    top: 99px;
+    left: 104px;
+    width: 100%;
+    height: 87%;
+    z-index: 1;
+    width: 520px;
+    pointer-events: none;
+    .icon_zone {
+      display: block;
+      position: absolute;
+      transform: translateX(-50%) translateY(-50%);
+      transition: all 0.3s ease-in-out;
+      border-radius: 4px;
+      color: #010101;
+      
+      p {
+        color: #000;
+      }
+      img{
+        width: 30px;
+        height: 30px;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    
+    a[name="Hsinchu_City"] {
+      left: 45%;
+      top: 14%;
+    }
+    a[name="Keelung"] {
+      left: 84%;
+      top: 8%;
+    }
+    a[name="Taipei_City"] {
+      left: 72%;
+      top: 17%;
+    }
+    a[name="New_Taipei_City"] {
+      left: 76%;
+      top: 4%;
+    }
+    a[name="Taoyuan_City"] {
+      left: 56%;
+      top: 8%;
+    }
+    a[name="Hsinchu_County"] {
+      left: 61%;
+      top: 28%;
+    }
+    a[name="Miaoli_County"] {
+      left: 47%;
+      top: 26%;
+    }
+    a[name="Taichung_City"] {
+      left: 33%;
+      top: 29%;
+    }
+    a[name="Changhua_County"] {
+      left: 24%;
+      top: 37%;
+    }
+    a[name="Nantou_County"] {
+      left: 55%;
+      top: 46%;
+    }
+    a[name="Yunlin_County"] {
+      left: 24%;
+      top: 48%;
+    }
+    a[name="C10049"] {
+      left: 49%;
+      top: 57%;
+    }
+    a[name="Chiayi_County"] {
+      left: 22%;
+      top: 60%;
+    }
+    a[name="Tainan_City"] {
+      left: 28%;
+      top: 71%;
+    }
+    a[name="Kaohsiung_City"] {
+      left: 30%;
+      top: 84%;
+    }
+    a[name="Pingtung_County"] {
+      left: 45%;
+      top: 88%;
+    }
+    a[name="Yilan_County"] {
+      left: 85%;
+      top: 28%;
+    }
+    a[name="Hualien_County"] {
+      left: 78%;
+      top: 47%;
+    }
+    a[name="Taitung_County"] {
+      left: 65%;
+      top: 83%;
+    }
+    a[name="Penghu_County"] {
+      left: -4%;
+      top: 59%;
+    }
+    a[name="Chiayi_City"] {
+      left: 30%;
+      top: 53%;
+    }
+    a[name="Kinmen_County"] {
+      left: -4%;
+      top: 40%;
+    }
+    a[name="Lienchiang_County"] {
+      left: 18%;
+      top: 20%;
+    }
+  }
 }
 
 .detailList {

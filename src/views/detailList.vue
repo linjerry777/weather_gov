@@ -4,6 +4,7 @@
         <ol class="flex flex-wrap">
             <li @click="SelectCity(area.place)" v-for="(area, index) in weatherData" :key="index"
                 :class="{ 'bg-[#ddd]': area.place == selectedPlace.hover }"
+                :title="area.place+'目前體感方面'+area.CityData[0].ci"
                 class=" flex flex-nowrap justify-center items-center border border-solid border-[#ddd] w-2/4 min-h-[55px] hover:bg-[#ddd]">
                 <a 
                     class="flex flex-nowrap justify-center items-center   min-h-[55px]  w-full ">
