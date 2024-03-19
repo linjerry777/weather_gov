@@ -1,6 +1,6 @@
 <template>
     <div class="w-full text-center h-12 bg-blue-500">
-        Header
+        Header~~
     </div>
 </template>
 
