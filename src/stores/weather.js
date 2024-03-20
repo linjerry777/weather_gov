@@ -12,7 +12,8 @@ export const useWeatherStore = defineStore({
     async getWeather() {
       try {
         const response = await axios.get(
-          "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-0F5E6A37-DF69-4EB0-849C-8295DCC0184A"
+          // "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-0F5E6A37-DF69-4EB0-849C-8295DCC0184A"
+          `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${import.meta.env.VITE_KEY}`
         );
         const records = response.data.records;
         console.log(records, "rcds");
