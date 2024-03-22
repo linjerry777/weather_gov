@@ -1,2 +1,2 @@
-# VUE3_project
+# Vue3_project
 https://weather-gov.vercel.app/
