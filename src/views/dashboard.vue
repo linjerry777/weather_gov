@@ -7,13 +7,13 @@
         </div>
 
         <!-- 篩選 -->
-        <div class="shaixuan justify-center w-full">
+        <!-- <div class="shaixuan justify-center w-full">
             <div class="">
                 <select class="searchArea">
                     <option v-for="(cityName, idx) in weatherData" :key="idx">{{ cityName.place }}</option>
                 </select>
             </div>
-        </div>
+        </div> -->
         <!-- 卡片 -->
 
         <div class="flex card-group">

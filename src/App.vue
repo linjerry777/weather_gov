@@ -5,15 +5,16 @@
     <Taiwan />
     <RouterView></RouterView>
   </div>
-
+  <Footer />
 </template>
 
 <script setup>
 
 import Taiwan from '@/views/Taiwan.vue';
 import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 import { RouterView, RouterLink } from 'vue-router';
-import '@/style/dashboard.scss'
+import '@/style/index.scss'
 import { useWeatherStore } from '@/stores/weather';
 const { weatherData, weatherInfo, getWeather } = useWeatherStore();
 
